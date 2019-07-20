@@ -159,6 +159,7 @@ h2 {
     margin: 1rem auto;
     width: 600px;
     background: #fff;
+    transition: all 0.5s;
 }
 
 .choice-container:hover {
@@ -167,7 +168,6 @@ h2 {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
     transform: translateY(-0.3rem);
-    transition: transform 0.5s;
 }
 
 .choice-prefix {
