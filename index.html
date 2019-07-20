@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Medical Quiz</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- MAIN START PAGE TO START QUIZ ON BUTTON CLICK -->
+
+    <header role="banner" class="header">
+        <div class="container">
+            <h1>Test Your Medical Knowledge</h1>
+            <a href="#" class="btn" id="start-button" role="button">Start</a>
+        </div>
+    </header>
+
+    <!-- Question Container/Score -->
+    <div class="container">
+        <section class="head-display hidden">
+            <div class="head-item">
+                <p class="head-prefix">
+                    Question
+                </p>
+                <h3 class="head-main-text" id="questionCounter">1/5</h3>
+                <div id="progressBar">
+                    <div class="progress-bar-full"></div>
+                </div>
+            </div>
+            <div class="head-item">
+                <p class="head-prefix">
+                    Score
+                </p>
+                <h3 class="head-main-text" id="score">0</h3>
+            </div>
+        </section>
+    </div>
+
+    <!-- Main Quiz Section  -->
+    <div class="container">
+        <main role="main" class="game-container hidden">
+
+            <!-- Question Form -->
+            <div class="question-form">
+                <h2 id="question">What is the answer to this question?</h2>
+                <form class="box">
+                    <div class="choice-container">
+                        <input type="radio" value="1" name="answer1" id="choiceA">
+                        <div class="choice-prefix">A</div>
+                        <label for="choiceA" class="choice-text" data-number="1">Choice A</label>
+                    </div>
+
+                    <div class="choice-container">
+                        <input type="radio" value="2" name="answer1" id="choiceA" class="choices-data">
+                        <div class="choice-prefix">B</div>
+                        <label for="choiceA" class="choice-text" data-number="2">Choice B</label>
+                    </div>
+
+
+                    <div class="choice-container">
+                        <input type="radio" value="3" name="answer1" id="choiceA">
+                        <div class="choice-prefix">C</div>
+                        <label for="choiceA" class="choice-text" data-number="3">Choice C</label>
+                    </div>
+
+                    <div class="choice-container">
+                        <input type="radio" value="4" name="answer1" id="choiceA">
+                        <div class="choice-prefix">D</div>
+                        <label for="choiceA" class="choice-text" data-number="4">Choice D</label>
+                    </div>
+                </form>
+
+                <!-- Feedback after answering question -->
+                <div class="textual-feedback hidden">
+                    <p>feedback goes <span class="feedback-style">here</span></p>
+                </div>
+            </div>
+        </main>
+
+        <div class="container">
+            <section class="result hidden">
+                <div class="result-container">
+                    <h3 id="finalScore"></h3>
+                </div>
+
+            <a href="#" class="btn" id="playagain" role="button">Play Again</a>
+            <a href="index.html" class="secondary-btn" role="button">Home</a>
+            </section>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
