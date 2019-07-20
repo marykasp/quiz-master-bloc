@@ -80,31 +80,40 @@ let currentQuestion = {};
 const maxQuestions = 5;
 
 
-// Function that displays the game page
+/*******************
+Function that starts the game- changes display
+*******************/
 function startGame() {
+      // show head display and game container, hide start and results page
       $('.header').addClass('hidden');
       gameContainer.removeClass('hidden');
       headDisplayContainer.removeClass('hidden');
       results.addClass('hidden');
 
-    // remove hidden clss from game and headdisplay container
-
-    resetScore();
+      // calls function to reset the score to 0
+      resetScore();
 }
 
-// function that sets the score and available questions
+/*******************
+Function that resets the score
+*******************/
 function resetScore() {
   // set score and question counter to 0
   questionCounter = 0;
   score = 0;
+  scoreText.text(score);
 
   // put question array into a new array to manipulate
   availableQuestions = [...questions];
   console.log(availableQuestions);
 
+  //call function that generates and displays a randowm question from the array
   getNewQuestion();
 }
 
+/*******************
+Function that generates the new question, calls other functions
+*******************/
 function getNewQuestion() {
   if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
     displayFinalScore();
@@ -121,6 +130,9 @@ function getNewQuestion() {
   showCurrentQuestion();
 }
 
+/*******************
+Updates the question counter and increases the progress bar
+*******************/
 function questionCounterUpdate() {
   questionCounter++;
   questionCounterText.text(`${questionCounter} / ${maxQuestions}`);
@@ -130,12 +142,18 @@ function questionCounterUpdate() {
   progessBarFull.css('width', `${percentage}%`);
 }
 
+/*******************
+increases the score and fixes the score display
+*******************/
 function incrementScore(num) {
   score += num;
   console.log(score);
   scoreText.text(score);
 }
 
+/*******************
+Generate a Random Question from Availabe Questions
+*******************/
 function getRandomQuestion() {
   // pick a random index number from the available maxQuestion
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -143,15 +161,21 @@ function getRandomQuestion() {
   console.log(currentQuestion);
 
   availableQuestions.splice(questionIndex, 1);
+
 }
 
-
+/*******************
+Display current question to question form
+*******************/
 function showCurrentQuestion() {
   // change text of question HTML element with the current maxQuestion
   question.text(currentQuestion.question);
   showAnswers();
 }
 
+/*******************
+Display answer to current question in question form
+*******************/
 function showAnswers() {
     choices.each((index, value) => {
         const number = value.dataset['number'];
@@ -161,6 +185,9 @@ function showAnswers() {
     showFeedback();
 }
 
+/*******************
+Display answer to current question in question form
+*******************/
 function showFeedback() {
   choiceContainer.on('click', function(event) {
     if(!acceptAnswers) return;
@@ -193,6 +220,10 @@ function showFeedback() {
 
 }
 
+/*******************
+Displays the results page and shows final score
+contains buttons that on click will either go home or start game again
+*******************/
 function displayFinalScore() {
   // window.location.assign('results.html');
   headDisplayContainer.addClass('hidden');
@@ -201,8 +232,15 @@ function displayFinalScore() {
 
   $('#finalScore').text(score + ' / ' + maxQuestions);
   $('#playagain').on('click', startGame);
-
-
 }
 
-startButton.on('click', startGame);
+/**********************
+ starts game once start button is clicked, calls function that resets the score and gets the first questions
+ *************************/
+function renderPage() {
+  startButton.on('click', startGame);
+}
+
+// on document ready render the quiz 
+$(renderPage);
+
